@@ -288,6 +288,7 @@ header>*{
     padding: 5px 10px;
     cursor: pointer;
     box-shadow: 1px 1px 1px 0.5px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
 }
 
 .bib-button:active{
@@ -325,9 +326,13 @@ header>*{
 
 }
 
-/* modal - empréstimo*/
+/* buscar livro*/
 
-.modal h1{
+#buscar-livro{
+    display: none;
+}
+
+#buscar-livro h1{
     margin: 20px 0 0 20px;
 }
 
@@ -364,7 +369,7 @@ header>*{
     border: 1px solid #cecece;
 }
 
-/*Alerta modal*/
+/*Alerta */
 #alerta-busca-livro{
     display: none;
 }
@@ -378,10 +383,6 @@ header>*{
     align-items: baseline;
     border-radius: 10px;
     width: 50%;
-}
-
-.hidden{
-    display: none;
 }
 
 #alerta-busca-livro i{
