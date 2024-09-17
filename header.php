@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Software</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/library-logo.svg" type="image/x-icon">
+    <!-- Link do Font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <header>
+        <div id="header-group">
+            <div id="logo-group">
+                <!--<img src="img/library-book-svgrepo-com.svg" alt="logo">-->>
+                <a href="#" id="software-name">
+                    <h1><i class="fa fa-landmark"></i> Library Software</h1>
+                    <hr>
+                </a>
+
+            </div>
+            <div id="user-menu">
+                <div id="user-info">
+                    <i class="fa fa-user-circle"></i>
+                    <div>
+                        <h3>{user-name}</h3>
+                        <p>{user-type}</p>
+                    </div>
+                </div>
+                <div id="user-menu-dropdown" class="header-nav dropdown">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-user"></i>Perfil</a></li>
+                        <li><a href="#"><i class="fa fa-right-from-bracket"></i>Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <nav id="header-nav" class="header-nav">
+            <ul>
+                <li>
+                    <a href="home.php"><i class="fa fa-home"></i>Início</a>
+                </li>
+                <li>
+                    <a href="emprestimo.php">
+                        <i class="fa fa-arrows-rotate"></i>Empréstimo
+                        
+                    </a>
+                </li>
+                <li><a href="#"><i class="fa fa-book"></i>Títulos</a></li>
+                <li><a href="#"><i class="fa fa-users"></i>Usuários</a></li>
+                <li><a href="#"><i class="fa fa-history"></i>Histórico</a></li>
+            </ul>
+        </nav>
+    </header>
