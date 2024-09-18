@@ -1,4 +1,8 @@
-<div id="buscar-livro" class="main-container">
+<?php 
+    require_once 'header.php';
+?>
+
+<main id="buscar-livro" class="main-container">
     <div class="main-content">
 
         <div class="group-title">
@@ -41,4 +45,8 @@
             </div>
         </form>
     </div>
-</div>
+</main>
+
+<?php 
+    require_once 'footer.php';
+?>

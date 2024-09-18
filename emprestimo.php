@@ -14,7 +14,8 @@
                 <input type="text" name="aluno" id="aluno">
             </div>
             <input type="button" id="incluir-titulo" class="bib-button bib-button-secundary" value="Incluir Título"></input>
-            <div id="info-data-emprestimo">
+            
+            <!-- <div id="info-data-emprestimo">
                 <div>
                     <label for="data-emprestimo">Data do Empréstimo:</label>
                     <input type="text" name="data-emprestimo" id="data-emprestimo" value="dd/mm/aaaa" disabled>
@@ -23,7 +24,8 @@
                     <label for="data-prevista-devolucao">Data Prevista da Devolução:</label>
                     <input type="text" name="data-prevista-devolucao" id="data-prevista-devolucao" value="dd/mm/aaaa" disabled>
                 </div>
-            </div>
+            </div> -->
+            
             <button type="submit" id="concluir" class="bib-button bib-button-primary">Concluir</button>
         </form>
     </div>

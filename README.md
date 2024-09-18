@@ -16,7 +16,7 @@ Desenvolva um sistema web utilizando a linguagem PHP que permita o gerenciamento
    - Deve ser possível editar e excluir cadastros de usuários.
 
 3. **Empréstimos de Livros:**
-   - O sistema deve permitir que usuários (alunos ou professores) realizem empréstimos de livros.
+   - O sistema deve permitir que usuários (administradores ou professores) realizem empréstimos de livros.
    - Um livro só pode ser emprestado se houver exemplares disponíveis.
    - Deve ser possível registrar a devolução do livro, atualizando o número de exemplares disponíveis.
    - O sistema deve armazenar o histórico de empréstimos para cada usuário.

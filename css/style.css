@@ -328,9 +328,6 @@ header>*{
 
 /* buscar livro*/
 
-#buscar-livro{
-    display: none;
-}
 
 #buscar-livro h1{
     margin: 20px 0 0 20px;
@@ -370,9 +367,6 @@ header>*{
 }
 
 /*Alerta */
-#alerta-busca-livro{
-    display: none;
-}
 
 #alerta-busca-livro-content{
     margin: 20px 0;

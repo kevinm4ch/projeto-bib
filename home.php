@@ -12,13 +12,13 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="devolucao.php">
                     <img class="bib-icon" src="img/devolucao.png" alt="devolucao">
                     <p>Devolução</p>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="buscar_livro.php">
                     <img class="bib-icon" src="img/busca.png" alt="busca">
                     <p>Buscar<br />Título</p>
                 </a>
