@@ -7,8 +7,7 @@
     <title>Library Software</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="img/library-logo.svg" type="image/x-icon">
+    
     <!-- Link do Font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -18,8 +17,8 @@
     <header>
         <div id="header-group">
             <div id="logo-group">
-                <!--<img src="img/library-book-svgrepo-com.svg" alt="logo">-->>
-                <a href="#" id="software-name">
+                <!--<img src="img/library-book-svgrepo-com.svg" alt="logo">-->
+                <a href="/" id="software-name">
                     <h1><i class="fa fa-landmark"></i> Library Software</h1>
                     <hr>
                 </a>
@@ -44,10 +43,10 @@
         <nav id="header-nav" class="header-nav">
             <ul>
                 <li>
-                    <a href="home.php"><i class="fa fa-home"></i>Início</a>
+                    <a href="/"><i class="fa fa-home"></i>Início</a>
                 </li>
                 <li>
-                    <a href="emprestimo.php">
+                    <a href="/emprestimo">
                         <i class="fa fa-arrows-rotate"></i>Empréstimo
                         
                     </a>
@@ -58,3 +57,9 @@
             </ul>
         </nav>
     </header>
+    <body>
+        <?php 
+            $this->content();
+        ?>        
+    </body>
+</html>
