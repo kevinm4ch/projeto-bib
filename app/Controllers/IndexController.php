@@ -3,11 +3,15 @@
     namespace App\Controllers;
 
     use MF\Controller\Action;
-    use App\Connection;
-    use App\Models\Livro;
-use MF\Model\Container;
+    use MF\Model\Container;
+    
+
 
     class indexController extends Action{
+
+        public function login(){
+            $this->render('login', 0);
+        }
 
         public function home(){
             $this->render('home');
@@ -22,6 +26,8 @@ use MF\Model\Container;
         }
 
         public function buscarLivro(){
+
+
             $livro = Container::getModel('Livro');
             $info = $livro->getLivro();
             

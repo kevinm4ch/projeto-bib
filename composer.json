@@ -1,5 +1,5 @@
 {
-    "name": "projetos/miniframework",
+    "name": "projetos/biblioteca",
     "autoload": {
         "psr-4": {
             "App\\": "app/",

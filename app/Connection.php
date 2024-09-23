@@ -7,9 +7,9 @@
             try{
 
                 $host = "localhost";
-                $dbname = "biblioteca";
+                $dbname = "library_system";
                 $user = "root";
-                $pass = "admin";
+                $pass = "";
 
                 $con = new \PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
 
@@ -17,7 +17,7 @@
 
             }catch(\PDOException $e){
                 
-                echo "<pre>[ERRO:{$e->getCode()}]-> {$e->getMessage()}\n{$e->getTrace()}\n{$e->getTraceAsString()}</pre>";
+                echo "<pre>\n\n[ERRO:{$e->getCode()}]-> {$e->getMessage()}\n\n{$e->getTraceAsString()}</pre>";
             }
         }
     }
