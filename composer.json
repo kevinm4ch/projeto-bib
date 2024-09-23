@@ -5,11 +5,5 @@
             "App\\": "app/",
             "MF\\": "vendor/MF/" 
         }
-    },
-    "require": {
-        "php": ">=7.0"
-    },
-    "scripts": {
-        "start": "php -S localhost:8080"
     }
 }

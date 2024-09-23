@@ -1,10 +1,16 @@
 <?php 
     namespace App\Models;
 
-    class Produto {
-        
-        protected $db;
+    use MF\Model\Model;
 
+    class Livro extends Model{
+
+        public function getLivro(){
+            $q = "SELECT titulo FROM livro";
+            return $this->con->query($q)->fetchAll();
+
+        }
+        
 
     }
 

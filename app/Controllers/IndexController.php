@@ -3,6 +3,9 @@
     namespace App\Controllers;
 
     use MF\Controller\Action;
+    use App\Connection;
+    use App\Models\Livro;
+use MF\Model\Container;
 
     class indexController extends Action{
 
@@ -19,6 +22,10 @@
         }
 
         public function buscarLivro(){
+            $livro = Container::getModel('Livro');
+            $info = $livro->getLivro();
+            
+            @$this->view->dados = $info;
             $this->render('buscar_livro');
         }
 

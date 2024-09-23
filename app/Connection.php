@@ -17,7 +17,7 @@
 
             }catch(\PDOException $e){
                 
-                echo "[ERRO:{$e->getCode()}]-> {$e->getMessage()}";
+                echo "<pre>[ERRO:{$e->getCode()}]-> {$e->getMessage()}\n{$e->getTrace()}\n{$e->getTraceAsString()}</pre>";
             }
         }
     }
