@@ -1,5 +1,3 @@
-
-<?php var_dump($this->view->dados);?>
 <main id="buscar-livro" class="main-container">
     <div class="main-content">
 
@@ -7,40 +5,48 @@
             <h1>Buscar Livro</h1>
         </div>
     
-        <form method="post">
+        <form action="/buscar_livro" method="post">
             <div id="radio-opcoes-busca">
                 <p>Buscar por:</p>
                 <div>
-                    <input type="radio" name="radio-busca" id="radio-busca-codigo" value="código" checked>Código
+                    <input type="radio" name="radio-busca" id="radio-busca-codigo" value="0" checked>Código
                 </div>
+                <!-- <div>
+                    <input type="radio" name="radio-busca" id="radio-busca-isbn" value="1">ISBN
+                </div> -->
                 <div>
-                    <input type="radio" name="radio-busca" id="radio-busca-isbn" value="ISBN">ISBN
-                </div>
-                <div>
-                    <input type="radio" name="radio-busca" id="radio-busca-titulo" value="título">Título
+                    <input type="radio" name="radio-busca" id="radio-busca-titulo" value="1">Título
                 </div>
             </div>
             <div id="input-busca" class="input-group">
                 <input type="search" name="busca-livro" id="busca-livro" placeholder="Buscar por código">
                 <button id="bib-button-buscar" class="bib-button bib-button-secundary">Buscar</button>
             </div>
-            <div id="info-livro">
-                <p><strong>Título:</strong></p>
-                <p><strong>Autor:</strong></p>
-                <p><strong>Editora:</strong></p>
-                <p><strong>Ano de publicação:</strong>dd/mm/aaaa</p>
-            </div>
-            <!-- Alerta: Não há exemplares disponíveis -->
-            <div id="alerta-busca-livro">
-                <div id="alerta-busca-livro-content" class="bib-danger">
-                    <i class="fa-regular fa-circle-xmark"></i><p>Não há exemplares disponíveis para este livro</p>
+            <?php 
+                if(isset($_POST["busca-livro"]) && !empty($_POST["busca-livro"])): 
+                    $infoLivro = $this->view->dados
+            ?>
+                <div id="info-livro">
+                    <p><strong>Título: </strong><?=$infoLivro['titulo']?></p>
+                    <p><strong>Autor: </strong><?=$infoLivro['autor']?></p>
+                    <p><strong>Editora: </strong><?=$infoLivro['editora']?></p>
+                    <p><strong>Ano de publicação: </strong><?=$infoLivro['ano_publicacao']?></p>
                 </div>
-            </div>
+                    
+                <?php if($infoLivro['exemplares_disponiveis'] == 0): ?>
+                    <!-- Alerta: Não há exemplares disponíveis -->
+                    <div id="alerta-busca-livro">
+                        <div id="alerta-busca-livro-content" class="bib-danger">
+                            <i class="fa-regular fa-circle-xmark"></i><p>Não há exemplares disponíveis para este livro</p>
+                        </div>
+                    </div>
+                <?php endif;?>
+            <?php endif;?>
     
-            <div class="button-group">
+            <!-- <div class="button-group">
                 <button id="bib-button-cancelar" class="bib-button bib-button-cancel">Cancelar</button>
                 <button type="submit" id="adicionar-livro" class="bib-button bib-button-primary">Adicionar</button>
-            </div>
+            </div> -->
         </form>
     </div>
 </main>

@@ -27,11 +27,11 @@
 
         public function buscarLivro(){
 
-
-            $livro = Container::getModel('Livro');
-            $info = $livro->getLivro();
-            
-            @$this->view->dados = $info;
+            if(isset($_POST["busca-livro"]) && !empty($_POST["busca-livro"])){
+                $livro = Container::getModel('Livro');
+                $info = $livro->getLivro($_POST["busca-livro"], $_POST["radio-busca"]);
+                @$this->view->dados = $info;
+            }
             $this->render('buscar_livro');
         }
 
