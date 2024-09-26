@@ -25,6 +25,7 @@
         protected function run($url){
             foreach($this->routes as $route){
                 if($url === $route['route']){
+                    $rota_encontrada = true;
                     $class_controller = "App\\Controllers\\".ucfirst($route['controller']);
     
                     $controller = new $class_controller;         
@@ -32,6 +33,17 @@
                     $controller->$action();
                 }
             }
+            
+            //Rota padrão: Caso a rota não exista manda o usuário para a rota raíz
+            if(!$rota_encontrada){
+                session_start();
+                if((!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] == false)){
+                    header('Location: /');
+                }else{
+                    header('Location: /home');
+                }
+            }
+            
         }
     
         protected function getURL(){
