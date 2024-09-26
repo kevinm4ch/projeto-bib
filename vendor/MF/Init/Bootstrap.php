@@ -36,12 +36,8 @@
             
             //Rota padrão: Caso a rota não exista manda o usuário para a rota raíz
             if(!$rota_encontrada){
-                session_start();
-                if((!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] == false)){
-                    header('Location: /');
-                }else{
-                    header('Location: /home');
-                }
+                header('Location: /');
+                
             }
             
         }

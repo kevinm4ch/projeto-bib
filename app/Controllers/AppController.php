@@ -41,6 +41,16 @@
             }
         }
 
+        protected function erro(string $erro){
+            echo "
+            <div id='alerta-busca-livro'>
+                        <div id='alerta-busca-livro-content' class='bib-danger'>
+                            <i class='fa-regular fa-circle-xmark'></i><p>$erro</p>
+                        </div>
+                    </div>
+            ";
+        }
+
     }
 
 ?>

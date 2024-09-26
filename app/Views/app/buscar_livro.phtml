@@ -22,9 +22,14 @@
                 <input type="search" name="busca-livro" id="busca-livro" placeholder="Buscar por código">
                 <button id="bib-button-buscar" class="bib-button bib-button-secundary">Buscar</button>
             </div>
+            
             <?php 
-                if(isset($_POST["busca-livro"]) && !empty($_POST["busca-livro"])): 
-                    $infoLivro = $this->view->dados
+                if(isset($_POST["busca-livro"])){
+                    $infoLivro = $this->view->dados;
+                    if(empty($infoLivro)){
+                        $this->erro('Livro não encontrado');
+                    }else{
+
             ?>
                 <div id="info-livro">
                     <p><strong>Título: </strong><?=$infoLivro['titulo']?></p>
@@ -32,16 +37,14 @@
                     <p><strong>Editora: </strong><?=$infoLivro['editora']?></p>
                     <p><strong>Ano de publicação: </strong><?=$infoLivro['ano_publicacao']?></p>
                 </div>
-                    
-                <?php if($infoLivro['exemplares_disponiveis'] == 0): ?>
-                    <!-- Alerta: Não há exemplares disponíveis -->
-                    <div id="alerta-busca-livro">
-                        <div id="alerta-busca-livro-content" class="bib-danger">
-                            <i class="fa-regular fa-circle-xmark"></i><p>Não há exemplares disponíveis para este livro</p>
-                        </div>
-                    </div>
-                <?php endif;?>
-            <?php endif;?>
+
+            <?php 
+                        if($infoLivro['exemplares_disponiveis'] == 0){
+                            $this->erro('Não há exemplares disponíveis para este livro.');
+                        }
+                    }
+                } 
+            ?>
     
             <!-- <div class="button-group">
                 <button id="bib-button-cancelar" class="bib-button bib-button-cancel">Cancelar</button>

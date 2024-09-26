@@ -7,7 +7,13 @@
     class indexController extends Action{
 
         public function login(){
-            $this->render('login');
+            session_start();
+
+            if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] == false){
+                $this->render('login');
+            }else{
+                header('Location: /home');
+            }
         }
 
     }
