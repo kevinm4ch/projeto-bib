@@ -4,7 +4,7 @@
         <div class="group-title">
             <h1>Buscar Livro</h1>
         </div>
-    
+
         <form action="/buscar_livro" method="post">
             <div id="radio-opcoes-busca">
                 <p>Buscar por:</p>
@@ -22,30 +22,30 @@
                 <input type="search" name="busca-livro" id="busca-livro" placeholder="Buscar por código">
                 <button id="bib-button-buscar" class="bib-button bib-button-secundary">Buscar</button>
             </div>
-            
-            <?php 
-                if(isset($_POST["busca-livro"])){
-                    $infoLivro = $this->view->dados;
-                    if(empty($infoLivro)){
-                        $this->erro('Livro não encontrado');
-                    }else{
+
+            <?php
+            if (isset($_POST["busca-livro"])) {
+                $infoLivro = $this->view->dados;
+                if (empty($infoLivro)) {
+                    $this->erro('Livro não encontrado');
+                } else {
 
             ?>
-                <div id="info-livro">
-                    <p><strong>Título: </strong><?=$infoLivro['titulo']?></p>
-                    <p><strong>Autor: </strong><?=$infoLivro['autor']?></p>
-                    <p><strong>Editora: </strong><?=$infoLivro['editora']?></p>
-                    <p><strong>Ano de publicação: </strong><?=$infoLivro['ano_publicacao']?></p>
-                </div>
+                    <div id="info-livro">
+                        <p><strong>Título: </strong><?= $infoLivro['titulo'] ?></p>
+                        <p><strong>Autor: </strong><?= $infoLivro['autor'] ?></p>
+                        <p><strong>Editora: </strong><?= $infoLivro['editora'] ?></p>
+                        <p><strong>Ano de publicação: </strong><?= $infoLivro['ano_publicacao'] ?></p>
+                    </div>
 
-            <?php 
-                        if($infoLivro['exemplares_disponiveis'] == 0){
-                            $this->erro('Não há exemplares disponíveis para este livro.');
-                        }
+            <?php
+                    if ($infoLivro['exemplares_disponiveis'] == 0) {
+                        $this->erro('Não há exemplares disponíveis para este livro.');
                     }
-                } 
+                }
+            }
             ?>
-    
+
             <!-- <div class="button-group">
                 <button id="bib-button-cancelar" class="bib-button bib-button-cancel">Cancelar</button>
                 <button type="submit" id="adicionar-livro" class="bib-button bib-button-primary">Adicionar</button>
@@ -53,3 +53,30 @@
         </form>
     </div>
 </main>
+
+<script>
+    let radio = document.getElementsByName('radio-busca')
+
+    radio.forEach(radio => {
+        radio.addEventListener('click', () => {
+            let busca = document.getElementById('busca-livro')
+            let valor = parseInt(radio.value)
+            let placeholder = 'Buscar por '
+            switch (valor) {
+                case 0:
+                    placeholder += 'código'
+                    break;
+
+                case 1:
+                    placeholder += 'título'
+                    console.log(placeholder)
+                    break;
+
+                default:
+                    break;
+            }
+
+            busca.placeholder = placeholder
+        })
+    });
+</script>
