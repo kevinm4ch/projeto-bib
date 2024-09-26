@@ -12,7 +12,7 @@ class Route extends Bootstrap{
             
             'login' => [
                 'route' => '/',
-                'controller' => 'indexController',
+                'controller' => 'IndexController',
                 'action' => 'login'
             ],
 
@@ -30,25 +30,25 @@ class Route extends Bootstrap{
 
             'home' => [
                 'route' => '/home',
-                'controller' => 'indexController',
+                'controller' => 'AppController',
                 'action' => 'home'
             ],
 
             'emprestimo' => [
                 'route' => '/emprestimo',
-                'controller' => 'indexController',
+                'controller' => 'AppController',
                 'action' => 'emprestimo'
             ],
 
             'devolucao' => [
                 'route' => '/devolucao',
-                'controller' => 'indexController',
+                'controller' => 'AppController',
                 'action' => 'devolucao'
             ],
 
             'buscar_livro' => [
                 'route' => '/buscar_livro',
-                'controller' => 'indexController',
+                'controller' => 'AppController',
                 'action' => 'buscarLivro'
             ]
 
