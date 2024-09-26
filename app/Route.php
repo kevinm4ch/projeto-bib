@@ -9,11 +9,23 @@ class Route extends Bootstrap{
     protected function initRoutes(){
         
         $this->routes = [
-
+            
             'login' => [
                 'route' => '/',
                 'controller' => 'indexController',
                 'action' => 'login'
+            ],
+
+            'logout' => [
+                'route' => '/logout',
+                'controller' => 'AuthController',
+                'action' => 'logout'
+            ],
+
+            'autenticar' => [
+                'route' => '/autenticar',
+                'controller' => 'AuthController',
+                'action' => 'autenticar'
             ],
 
             'home' => [

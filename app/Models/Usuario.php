@@ -1,17 +1,22 @@
-<?php 
-    namespace App\Models;
+<?php
 
-    use MF\Model\Model;
+namespace App\Models;
 
-    class Livro extends Model{
+use MF\Model\Model;
 
-        public function getLivro(){
-            $q = "SELECT titulo FROM livro";
-            return $this->con->query($q)->fetchAll();
+class Usuario extends Model
+{
 
-        }
-        
+    public function autenticar($matricula, $senha)
+    {
 
+        $q = "SELECT id_usuario, nome, email, matricula, senha, tipo_usuario FROM usuario WHERE matricula = :matricula AND senha = :senha";
+
+        $stmt = $this->con->prepare($q);
+        $stmt->bindValue(':matricula', $matricula);
+        $stmt->bindValue(':senha', $senha);
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
-
-?>
+}

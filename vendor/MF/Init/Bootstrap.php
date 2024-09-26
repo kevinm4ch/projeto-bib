@@ -29,7 +29,6 @@
     
                     $controller = new $class_controller;         
                     $action = $route['action'];
-                    
                     $controller->$action();
                 }
             }

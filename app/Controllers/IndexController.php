@@ -5,24 +5,22 @@
     use MF\Controller\Action;
     use MF\Model\Container;
     
-
-
     class indexController extends Action{
 
         public function login(){
-            $this->render('login', 0);
+            $this->render('login');
         }
 
         public function home(){
-            $this->render('home');
+            $this->render('home', 1);
         }
         
         public function emprestimo(){
-            $this->render('emprestimo');
+            $this->render('emprestimo', 1);
         }
 
         public function devolucao(){
-            $this->render('devolucao');
+            $this->render('devolucao', 1);
         }
 
         public function buscarLivro(){
@@ -32,7 +30,7 @@
                 $info = $livro->getLivro($_POST["busca-livro"], $_POST["radio-busca"]);
                 @$this->view->dados = $info;
             }
-            $this->render('buscar_livro');
+            $this->render('buscar_livro', 1);
         }
 
     }
