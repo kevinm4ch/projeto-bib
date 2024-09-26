@@ -9,13 +9,11 @@ class Livro extends Model{
     public function getLivro($valor = null, $coluna){
         switch ($coluna){
 
-            //Busca por código (id)
-            case 0:    
+            case 'código':    
                 $q = "SELECT id_livro, titulo, autor, editora, ano_publicacao, exemplares_disponiveis FROM livro WHERE id_livro = :valor";     
                 break;
 
-            //Busca por título
-            case 1:
+            case 'título':
                 $q = "SELECT id_livro, titulo, autor, editora, ano_publicacao, exemplares_disponiveis FROM livro WHERE titulo = :valor";
                 break;
                 

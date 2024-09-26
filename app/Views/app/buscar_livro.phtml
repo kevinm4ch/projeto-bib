@@ -9,13 +9,13 @@
             <div id="radio-opcoes-busca">
                 <p>Buscar por:</p>
                 <div>
-                    <input type="radio" name="radio-busca" id="radio-busca-codigo" value="0" checked>Código
+                    <input type="radio" name="radio-busca" id="radio-busca-codigo" value="código" checked>Código
                 </div>
                 <!-- <div>
                     <input type="radio" name="radio-busca" id="radio-busca-isbn" value="1">ISBN
                 </div> -->
                 <div>
-                    <input type="radio" name="radio-busca" id="radio-busca-titulo" value="1">Título
+                    <input type="radio" name="radio-busca" id="radio-busca-titulo" value="título">Título
                 </div>
             </div>
             <div id="input-busca" class="input-group">
@@ -55,28 +55,12 @@
 </main>
 
 <script>
-    let radio = document.getElementsByName('radio-busca')
+    let radio = document.getElementsByName('radio-busca');
 
     radio.forEach(radio => {
         radio.addEventListener('click', () => {
-            let busca = document.getElementById('busca-livro')
-            let valor = parseInt(radio.value)
-            let placeholder = 'Buscar por '
-            switch (valor) {
-                case 0:
-                    placeholder += 'código'
-                    break;
-
-                case 1:
-                    placeholder += 'título'
-                    console.log(placeholder)
-                    break;
-
-                default:
-                    break;
-            }
-
-            busca.placeholder = placeholder
+            
+            document.getElementById('busca-livro').placeholder = 'Buscar por ' + radio.value
         })
     });
 </script>
