@@ -9,6 +9,13 @@
         public function incluirEmprestimo($usuario){
             $sqlUsuario = "SELECT id_usuario FROM usuario WHERE nome = :usuario";
 
+            $stmt = $this->con->prepare($sqlUsuario);
+            $stmt->bindValue(':valor', $usuario);
+            $stmt->execute();
+    
+            $stmt->fetch();
+
+            
 
         }
 

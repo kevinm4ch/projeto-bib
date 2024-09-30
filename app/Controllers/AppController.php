@@ -19,7 +19,7 @@
         public function emprestimo(){
             $usuario = Container::getModel('Usuario');
             
-            $listaUsuarios = $usuario->getUsuario();
+            $listaUsuarios = $usuario->getTodosUsuarios();
             
             @$this->view->dados = $listaUsuarios;
 
@@ -48,7 +48,6 @@
         }
 
         public function novoEmprestimo(){
-            
         }
 
         private function verificarAutenticacao(){
