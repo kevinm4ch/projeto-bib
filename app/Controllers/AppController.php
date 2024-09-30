@@ -56,7 +56,15 @@
 
             $emprestimo = Container::getModel('Emprestimo');
 
-            $emprestimo->incluirEmprestimo();
+            
+
+            if($emprestimo->incluirEmprestimo()){
+                unset($_SESSION['novo_emprestimo']);
+                header('Location: /emprestimo?sucesso=1');
+
+            }else{
+                header('Location: /emprestimo?erro=2');
+            }
 
         }
 

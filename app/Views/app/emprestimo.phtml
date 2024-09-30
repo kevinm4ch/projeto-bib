@@ -3,6 +3,7 @@ $listaUsuarios = $this->view->dados;
 $this->toString($_SESSION);
 
 if (!isset($_GET['emprestimo'])) {
+    unset($_SESSION['novo_emprestimo']);
     $num_emprestimo = rand();
 } else {
     $num_emprestimo = $_SESSION['novo_emprestimo']['num_emprestimo'];
@@ -20,7 +21,7 @@ if (!isset($_GET['emprestimo'])) {
                 <select name="select-usuario" id="select-usuario">
                     <option disabled selected value="null">Selecione um usuario</option>
                     <?php foreach ($listaUsuarios as $usuario): ?>
-                        <?php if(isset($_GET['emprestimo']) && $usuario->nome == $_SESSION['novo_emprestimo']['usuario']):?>
+                        <?php if(isset($_GET['emprestimo']) && $usuario->nome == $_SESSION['novo_emprestimo']['usuario'] && $_GET['emprestimo'] == $_SESSION['novo_emprestimo']['num_emprestimo']):?>
                         <option selected value="<?= $usuario->nome ?>"><?= $usuario->nome ?></option>
                         <?php endif;?>
                         <option value="<?= $usuario->nome ?>"><?= $usuario->nome ?></option>
@@ -29,12 +30,19 @@ if (!isset($_GET['emprestimo'])) {
             </div>
 
             <?php
-            if (isset($_GET['erro']) && $_GET['erro'] = 1) {
-                $this->erro('Selecione um usúario para realizar o emprestimo');
+            if (isset($_GET['erro'])) {
+                switch($_GET['erro']){
+                    case 1:
+                        $this->erro('Selecione um usúario para realizar o emprestimo');
+                        break;
+                    case 2:
+                        $this->erro('Não foi possível concluir o empréstimo');
+                        break;
+                }
             }
             ?>
 
-            <?php if (isset($_GET['emprestimo'])): ?>
+            <?php if (isset($_GET['emprestimo']) && $_GET['emprestimo'] == $_SESSION['novo_emprestimo']['num_emprestimo'] && isset($_SESSION['novo_emprestimo']['livro'])): ?>
                 <div id="info-livro">
                     <p><strong>Título: </strong><?= $_SESSION['novo_emprestimo']['livro']['titulo'] ?></p>
                     <p><strong>Autor: </strong><?= $_SESSION['novo_emprestimo']['livro']['autor'] ?></p>

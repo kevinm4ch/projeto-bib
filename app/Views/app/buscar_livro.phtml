@@ -71,9 +71,9 @@
     });
 
     <?php if (isset($_GET['emprestimo'])): ?>
-        let $numEmprestimo = <?=$_GET['emprestimo']?>
+        let $numEmprestimo = <?= $_GET['emprestimo'] ?>
 
-        function voltarEmprestimo($numEmprestimo){
+        function voltarEmprestimo($numEmprestimo) {
             return `/emprestimo?emprestimo=${$numEmprestimo}`
         }
 
@@ -82,10 +82,11 @@
             document.location.href = voltarEmprestimo($numEmprestimo)
 
         })
+        <?php if (isset($_POST["busca-livro"])): ?>
+            document.getElementById('adicionar-livro').addEventListener('click', () => {
+                document.location.href = voltarEmprestimo($numEmprestimo)
 
-        document.getElementById('adicionar-livro').addEventListener('click', () => {
-            document.location.href = voltarEmprestimo($numEmprestimo)
-
-        })
+            })
+        <?php endif; ?>
     <?php endif; ?>
 </script>
