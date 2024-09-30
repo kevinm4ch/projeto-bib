@@ -22,12 +22,12 @@ class Usuario extends Model
 
     public function getUsuario($coluna, $valor){
         $q = "SELECT id_usuario, nome, email, matricula, senha, tipo_usuario FROM usuario WHERE $coluna = :valor";
-
+        
         $stmt = $this->con->prepare($q);
         $stmt->bindValue(':valor', $valor);
         $stmt->execute();
 
-        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
     }
 
 

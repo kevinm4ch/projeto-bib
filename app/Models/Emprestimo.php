@@ -6,16 +6,18 @@
     class Emprestimo extends Model{
 
         
-        public function incluirEmprestimo($usuario){
-            $sqlUsuario = "SELECT id_usuario FROM usuario WHERE nome = :usuario";
+        public function incluirEmprestimo(){
+            $sql = "INSERT INTO emprestimo(id_livro, id_usuario, data_emprestimo, `status`) VALUES (:livro, :usuario, :dataEmprestimo, default)";
 
-            $stmt = $this->con->prepare($sqlUsuario);
-            $stmt->bindValue(':valor', $usuario);
+            print_r($_SESSION);
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindValue(':livro', $_SESSION['novo_emprestimo']['livro']['id_livro']);
+            $stmt->bindValue(':usuario', $_SESSION['novo_emprestimo']['usuario']);
+            $stmt->bindValue(':dataEmprestimo', date('Y-m-d'));
+
             $stmt->execute();
-    
-            $stmt->fetch();
 
-            
+
 
         }
 

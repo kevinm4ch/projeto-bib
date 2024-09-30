@@ -48,6 +48,16 @@
         }
 
         public function novoEmprestimo(){
+            $usuario = Container::getModel('Usuario');
+
+            $usuarioEmprestimo = $usuario->getUsuario('nome', $_SESSION['novo_emprestimo']['usuario']);
+
+            $_SESSION['novo_emprestimo']['usuario'] = $usuarioEmprestimo->id_usuario;
+
+            $emprestimo = Container::getModel('Emprestimo');
+
+            $emprestimo->incluirEmprestimo();
+
         }
 
         private function verificarAutenticacao(){
