@@ -17,6 +17,12 @@
         }
         
         public function emprestimo(){
+            $usuario = Container::getModel('Usuario');
+            
+            $listaUsuarios = $usuario->getUsuario();
+            
+            @$this->view->dados = $listaUsuarios;
+
             $this->render('emprestimo', 1);
         }
 
@@ -26,6 +32,10 @@
 
         public function buscarLivro(){
 
+            if(isset($_POST['select-usuario'])){
+                echo 'show';
+            }
+            
             if(isset($_POST["busca-livro"]) && !empty($_POST["busca-livro"])){
                 $livro = Container::getModel('Livro');
                 $info = $livro->getLivro($_POST["busca-livro"], $_POST["radio-busca"]);
@@ -40,17 +50,6 @@
                 header('Location: /');
             }
         }
-
-        protected function erro(string $erro){
-            echo "
-            <div id='alerta-busca-livro'>
-                        <div id='alerta-busca-livro-content' class='bib-danger'>
-                            <i class='fa-regular fa-circle-xmark'></i><p>$erro</p>
-                        </div>
-                    </div>
-            ";
-        }
-
     }
 
 ?>

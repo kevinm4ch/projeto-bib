@@ -19,4 +19,13 @@ class Usuario extends Model
 
         return $stmt->fetch();
     }
+
+    public function getUsuario(){
+        $q = "SELECT nome FROM usuario ";
+
+        $stmt = $this->con->prepare($q);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    }
 }

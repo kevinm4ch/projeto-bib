@@ -27,6 +27,24 @@
     
             require_once "../app/Views/$viewDir/{$this->view->page}.phtml";
         }
+
+
+        protected function erro(string $erro){
+            echo "
+            <div id='erro'>
+                        <div id='erro-content' class='bib-danger'>
+                            <i class='fa-regular fa-circle-xmark'></i><p>$erro</p>
+                        </div>
+                    </div>
+            ";
+        }
+
+        protected function toString($array){
+            echo '<pre>';
+            print_r($array);
+            echo '</pre>';
+        }
+
     }
 
 ?>

@@ -2,6 +2,11 @@
 <div class="container-login">
     <div class="login">
         <img src="img/library-logo.svg" alt="logo-biblioteca" id="logo-login">
+    <?php 
+        if(isset($_GET['erro'])){
+            $this->erro('Usuário e/ou senha inválidos');
+        }
+    ?>
         <form action="/autenticar" method="POST">
             <label for="usuario">Usuário</label>
             <input type="text" name="usuario" id="usuario">
@@ -12,3 +17,4 @@
         <a href="" id="redefinir-senha">Esqueceu a senha?</a>
     </div>
 </div>
+

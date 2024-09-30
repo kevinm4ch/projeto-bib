@@ -276,7 +276,8 @@ header>*{
     margin-bottom: 20px;
 }
 
-.input-group input{
+.input-group input,
+.input-group select{
     width: 70%;
     margin: 5px 0;
     border: 1px solid rgba(54, 52, 87, 0.3);
@@ -372,7 +373,7 @@ header>*{
 
 /*Alerta */
 
-#alerta-busca-livro-content{
+#erro-content{
     margin: 20px 0;
     color: #961a18;
     border: 1px solid #c7514f;
@@ -380,9 +381,10 @@ header>*{
     display: flex;
     align-items: baseline;
     border-radius: 10px;
+    min-width: 300px;
     width: 50%;
 }
 
-#alerta-busca-livro i{
+#erro i{
     margin-right: 5px;
 }

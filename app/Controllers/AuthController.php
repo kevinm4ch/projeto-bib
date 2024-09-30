@@ -20,7 +20,7 @@
                 $_SESSION['tipo-usuario'] = $user['tipo_usuario'];
                 header('Location: /home');
             }else{
-                header('Location: /');
+                header('Location: /?erro=1');
             }
         }
 
