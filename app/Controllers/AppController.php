@@ -19,7 +19,7 @@
         public function emprestimo(){
             $usuario = Container::getModel('Usuario');
             
-            $listaUsuarios = $usuario->getTodosUsuarios();
+            $listaUsuarios = $usuario->getAllUsuario();
             
             @$this->view->dados = $listaUsuarios;
 
