@@ -1,4 +1,4 @@
-
+<?= $this->toString($_SESSION) ?>
 <main id="buscar-livro" class="main-container">
     <div class="main-content">
 
@@ -6,15 +6,12 @@
             <h1>Buscar Livro</h1>
         </div>
 
-        <form action="<?=$_SERVER["REQUEST_URI"]?>" method="post">
+        <form action="<?= $_SERVER["REQUEST_URI"] ?>" method="post">
             <div id="radio-opcoes-busca">
                 <p>Buscar por:</p>
                 <div>
                     <input type="radio" name="radio-busca" id="radio-busca-codigo" value="código" checked>Código
                 </div>
-                <!-- <div>
-                    <input type="radio" name="radio-busca" id="radio-busca-isbn" value="1">ISBN
-                </div> -->
                 <div>
                     <input type="radio" name="radio-busca" id="radio-busca-titulo" value="título">Título
                 </div>
@@ -27,6 +24,12 @@
             <?php
             if (isset($_POST["busca-livro"])) {
                 $infoLivro = $this->view->dados;
+
+                if (isset($_GET['emprestimo'])) {
+
+                    $_SESSION['novo_emprestimo']['livro'] = $infoLivro;
+                }
+
                 if (empty($infoLivro)) {
                     $this->erro('Livro não encontrado');
                 } else {
@@ -47,12 +50,12 @@
             }
             ?>
 
-           
+            <?php if (isset($_GET['emprestimo'])): ?>
                 <div class="button-group">
                     <button type="button" id="bib-button-cancelar" class="bib-button bib-button-cancel">Cancelar</button>
                     <button type="button" id="adicionar-livro" class="bib-button bib-button-primary">Adicionar</button>
                 </div>
-
+            <?php endif; ?>
         </form>
     </div>
 </main>
@@ -62,21 +65,27 @@
 
     radio.forEach(radio => {
         radio.addEventListener('click', () => {
-            
+
             document.getElementById('busca-livro').placeholder = 'Buscar por ' + radio.value
         })
     });
 
-    document.getElementById('bib-button-cancelar').addEventListener('click', () => {
-        
-        document.location.href = '/emprestimo'
-        
-    })
+    <?php if (isset($_GET['emprestimo'])): ?>
+        let $numEmprestimo = <?=$_GET['emprestimo']?>
 
-    document.getElementById('adicionar-livro').addEventListener('click', () => {
-        
-        document.location.href = '/emprestimo'
-        
-    })
+        function voltarEmprestimo($numEmprestimo){
+            return `/emprestimo?emprestimo=${$numEmprestimo}`
+        }
 
+        document.getElementById('bib-button-cancelar').addEventListener('click', () => {
+
+            document.location.href = voltarEmprestimo($numEmprestimo)
+
+        })
+
+        document.getElementById('adicionar-livro').addEventListener('click', () => {
+            document.location.href = voltarEmprestimo($numEmprestimo)
+
+        })
+    <?php endif; ?>
 </script>

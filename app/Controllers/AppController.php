@@ -32,8 +32,11 @@
 
         public function buscarLivro(){
 
-            if(isset($_POST['select-usuario'])){
-                echo 'show';
+            if(isset($_GET['emprestimo'])){
+                $_SESSION['novo_emprestimo'] = [
+                    'num_emprestimo' => $_GET['emprestimo'],
+                    'usuario' => $_GET['usuario'],
+                ];
             }
             
             if(isset($_POST["busca-livro"]) && !empty($_POST["busca-livro"])){
@@ -42,6 +45,10 @@
                 @$this->view->dados = $info;
             }
             $this->render('buscar_livro', 1);
+        }
+
+        public function novoEmprestimo(){
+            
         }
 
         private function verificarAutenticacao(){

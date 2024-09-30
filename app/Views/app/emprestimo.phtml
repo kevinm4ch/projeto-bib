@@ -1,5 +1,12 @@
 <?php
-    $listaUsuarios = $this->view->dados;
+$listaUsuarios = $this->view->dados;
+$this->toString($_SESSION);
+
+if (!isset($_GET['emprestimo'])) {
+    $num_emprestimo = rand();
+} else {
+    $num_emprestimo = $_SESSION['novo_emprestimo']['num_emprestimo'];
+}
 ?>
 <main id="emprestimo" class="main-container">
     <div class="main-content">
@@ -7,12 +14,15 @@
             <img class="bib-icon" src="img/emprestimo.png" alt="emprestimo">
             <h1>Novo Empréstimo</h1>
         </div>
-        <form method="post" action="/buscar_livro">
+        <form method="post" action="/novo_emprestimo">
             <div class="input-group">
                 <label for="select-usuario">Usuário:</label>
                 <select name="select-usuario" id="select-usuario">
                     <option disabled selected value="null">Selecione um usuario</option>
                     <?php foreach ($listaUsuarios as $usuario): ?>
+                        <?php if(isset($_GET['emprestimo']) && $usuario->nome == $_SESSION['novo_emprestimo']['usuario']):?>
+                        <option selected value="<?= $usuario->nome ?>"><?= $usuario->nome ?></option>
+                        <?php endif;?>
                         <option value="<?= $usuario->nome ?>"><?= $usuario->nome ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -24,7 +34,17 @@
             }
             ?>
 
-            <input type="submit" id="incluir-titulo" class="bib-button bib-button-secundary" value="Incluir Título"></input>
+            <?php if (isset($_GET['emprestimo'])): ?>
+                <div id="info-livro">
+                    <p><strong>Título: </strong><?= $_SESSION['novo_emprestimo']['livro']['titulo'] ?></p>
+                    <p><strong>Autor: </strong><?= $_SESSION['novo_emprestimo']['livro']['autor'] ?></p>
+                    <p><strong>Editora: </strong><?= $_SESSION['novo_emprestimo']['livro']['editora'] ?></p>
+                    <p><strong>Ano de publicação: </strong><?= $_SESSION['novo_emprestimo']['livro']['ano_publicacao'] ?></p>
+                </div>
+
+            <?php endif; ?>
+
+            <input type="button" id="incluir-titulo" class="bib-button bib-button-secundary" value="Incluir Título"></input>
 
             <button type="submit" id="concluir" class="bib-button bib-button-primary">Concluir</button>
         </form>
@@ -35,7 +55,11 @@
         let usuario = document.getElementById('select-usuario').value;
         if (usuario == 'null') {
             document.location.href = '/emprestimo?erro=1'
+        } else {
+            document.location.href = '/buscar_livro?usuario=' + usuario + '&emprestimo=<?= $num_emprestimo ?>'
         }
-    })
 
+        console.log(usuario)
+
+    })
 </script>

@@ -50,7 +50,13 @@ class Route extends Bootstrap{
                 'route' => '/buscar_livro',
                 'controller' => 'AppController',
                 'action' => 'buscarLivro'
-            ]
+            ],
+
+            'novo_emprestimo' => [
+                'route' => '/novo_emprestimo',
+                'controller' => 'AppController',
+                'action' => 'novoEmprestimo'
+            ],
 
         ];    
     }
